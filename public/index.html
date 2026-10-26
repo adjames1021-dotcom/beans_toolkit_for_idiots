@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bean's Toolkit</title>
+  <link rel="icon" href="bean.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Bean's Toolkit</h1>
+
+  <textarea id="text" spellcheck="false" autocomplete="off" aria-label="Text" placeholder="Paste text or code here"></textarea>
+  <p id="status" class="status" aria-live="polite"></p>
+
+  <div class="tools">
+    <div class="row">
+      <span class="label">Save</span>
+      <span class="buttons">
+        <input id="name" placeholder="untitled" aria-label="File name" spellcheck="false" autocomplete="off">
+        <button data-save="html">.html</button>
+        <button data-save="js">.js</button>
+        <button data-save="py">.py</button>
+        <button data-action="preview">Preview HTML</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">JSON</span>
+      <span class="buttons">
+        <button data-tool="jsonFormat">Format</button>
+        <button data-tool="jsonMinify">Minify</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">Encode</span>
+      <span class="buttons">
+        <button data-tool="base64Encode">Base64</button>
+        <button data-tool="urlEncode">URL</button>
+        <button data-tool="htmlEscape">HTML</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">Decode</span>
+      <span class="buttons">
+        <button data-tool="base64Decode">Base64</button>
+        <button data-tool="urlDecode">URL</button>
+        <button data-tool="htmlUnescape">HTML</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">Case</span>
+      <span class="buttons">
+        <button data-tool="upper">UPPER</button>
+        <button data-tool="lower">lower</button>
+        <button data-tool="camel">camelCase</button>
+        <button data-tool="snake">snake_case</button>
+        <button data-tool="kebab">kebab-case</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">Lines</span>
+      <span class="buttons">
+        <button data-tool="sort">Sort</button>
+        <button data-tool="unique">Remove duplicates</button>
+        <button data-tool="reverse">Reverse</button>
+        <button data-tool="trim">Trim spaces</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">Make</span>
+      <span class="buttons">
+        <button data-tool="sha256">SHA-256 hash</button>
+        <button data-action="uuid">UUID</button>
+      </span>
+    </div>
+    <div class="row">
+      <span class="label">Edit</span>
+      <span class="buttons">
+        <button data-action="undo">Undo</button>
+        <button data-action="copy">Copy</button>
+        <button data-action="clear">Clear</button>
+      </span>
+    </div>
+  </div>
+
+  <p class="hint">Every button changes the text in the box. Undo puts it back.</p>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+:root {
+  --paper: #fff;
+  --ink: #14274e;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1d3b;
+    --ink: #fff;
+    color-scheme: dark;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vh, 80px) 20px 96px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 18px/1.5 "Libre Caslon Text", Georgia, "Times New Roman", serif;
+}
+
+h1 {
+  margin: 0 0 40px;
+  padding-bottom: 22px;
+  border-bottom: 3px double var(--ink);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-indent: 0.35em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+textarea,
+input {
+  box-sizing: border-box;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 45vh;
+  min-height: 240px;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  tab-size: 4;
+  resize: vertical;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: inherit;
+  opacity: 0.45;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 10px 0 40px;
+  font-size: 0.85rem;
+}
+
+.status.note { font-style: italic; }
+
+.tools {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 8px 12px;
+  align-items: baseline;
+}
+
+.row + .row { margin-top: 16px; }
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button,
+input {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+button {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+input { width: 9rem; }
+
+textarea:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.hint {
+  margin: 24px 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (max-width: 520px) {
+  .row { grid-template-columns: 1fr; }
+}
+
+/* Phones zoom in on text boxes with text under 16px. */
+@media (pointer: coarse) {
+  textarea,
+  input { font-size: 16px; }
+}
