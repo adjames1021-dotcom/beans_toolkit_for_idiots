@@ -157,9 +157,24 @@ const actions = {
     setText('');
     text.focus();
   },
+  async traceRedirects() {
+    const input = text.value.trim();
+    const target = /^https?:\/\//i.test(input) ? input : `https://${input}`;
+    say('Tracing redirects…');
+    const res = await fetch(`/api/trace?url=${encodeURIComponent(target)}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Could not trace that URL');
+    const lines = data.chain.map((hop, i) => {
+      const status = hop.status ?? '?';
+      const note = hop.note ? ` (${hop.note})` : '';
+      return `${i + 1}. [${status}] ${hop.url}${note}`;
+    });
+    setText(lines.join('\n'));
+    say(`Found ${plural(data.chain.length, 'hop')}`);
+  },
 };
 
-const needsText = new Set(['preview', 'copy', 'clear']);
+const needsText = new Set(['preview', 'copy', 'clear', 'traceRedirects']);
 
 document.querySelector('.tools').addEventListener('click', async event => {
   const button = event.target.closest('button');

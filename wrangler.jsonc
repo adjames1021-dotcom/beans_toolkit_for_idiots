@@ -2,6 +2,6 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "toolkit",
   "compatibility_date": "2026-09-01",
-  // Plain static files, no Worker script.
-  "assets": { "directory": "./public" }
+  "main": "src/worker.js",
+  "assets": { "directory": "./public", "binding": "ASSETS" }
 }
